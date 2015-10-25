@@ -2,7 +2,8 @@ var system = require('system');
 var links = ['/',
              '/products',
              '/photos',
-             '/posts/11247-6-nestandartnyh-sistem-hraneniya-dlya-ochen-malenkoy-kvartiry'
+             '/posts/11247-6-nestandartnyh-sistem-hraneniya-dlya-ochen-malenkoy-kvartiry',
+             '/posts/11238-36-idealnyh-svetilnikov-dlya-malenkoy-kuhni'
             ];
 
 var host = system.env.host || 'http://staging.inmyroom.ru';
