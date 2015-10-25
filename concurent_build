@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+require 'json'
+
+API_TOKEN='e87ad0f672d17638ca66c297ee1ddfcb3b55ff3aacdbd0f6eec8892f21b3'
+
+MARVIN_ID =75247
+
+BRANCH   = ENV['CI_BRANCH']       #|| 'develop'
+MY_BUILD = ENV['CI_BUILD_NUMBER'] #
+
+raise 'branch undefined' if BRANCH.nil?
+raise 'build  undefined' if MY_BUILD.nil?
+
+class Project
+  def builds
+    data['builds']
+  end
+
+  def first_working_build_by_branch(name)
+    working_branches_by_name(name).min_by { |b| b['started_at']}
+  end
+
+  def working_branches_by_name(name)
+    builds.select { |b| b['branch'] == name && ['testing'].include?(b['status'])  }
+  end
+
+  def build_first?(branch, build_id)
+    build =first_working_build_by_branch(branch)
+    raise "no branches working with #{BRANCH}" if build.nil?
+    build['id'].to_s == build_id
+  end
+
+  def reload!
+    result = %x|curl -sS https://codeship.com/api/v1/projects/#{MARVIN_ID}.json?api_key=#{API_TOKEN}|
+    @data = JSON.parse(result)
+  end
+
+  def data
+    @data || reload!
+  end
+end
+
+p = Project.new
+
+puts "BRANCH:#{BRANCH}"
+puts "BUILD: #{MY_BUILD}"
+puts p.working_branches_by_name(BRANCH)
+
+loop do
+  break if p.build_first?(BRANCH, MY_BUILD)
+  puts 'wait'
+  sleep 5
+  p.reload!
+end
+
+puts 'go!'
