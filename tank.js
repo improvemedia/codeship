@@ -14,7 +14,7 @@ casper.test.begin('links unauthorized', links.length, function suite(test) {
     casper.setHttpAuth('imr', 'imr');
 
     links.forEach(function(link, _i, _a) {
-      casper.thenOpen(host + links[0],function() {
+      casper.thenOpen(host + link,function() {
           casper.test.assertHttpStatus(200, link);
       });
     });
