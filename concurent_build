@@ -31,7 +31,9 @@ class Project
   end
 
   def reload!
-    result = %x|curl -sS https://codeship.com/api/v1/projects/#{MARVIN_ID}.json?api_key=#{API_TOKEN}|
+    url = "https://codeship.com/api/v1/projects/#{MARVIN_ID}.json?api_key=#{API_TOKEN}"
+    puts url
+    result = %x|curl -sS #{url}|
     @data = JSON.parse(result)
   end
 
