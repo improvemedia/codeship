@@ -1,3 +1,4 @@
+
 var system = require('system');
 var links = ['/',
              '/products',
@@ -8,6 +9,10 @@ var links = ['/',
             ];
 
 var host = system.env.host || 'http://staging.inmyroom.ru';
+
+casper.options.pageSettings.loadImages  = false;
+casper.options.pageSettings.loadPlugins = false;
+casper.options.waitTimeout = 10000;
 
 casper.test.begin('links unauthorized', links.length, function suite(test) {
     casper.start();
