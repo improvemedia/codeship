@@ -3,13 +3,21 @@ var links = [
   '/',
   '/products',
   '/products?mobile=1',
+  '/products/myagkaya-mebel',
+  '/products/myagkaya-mebel?mobile=1',
   '/photos',
   '/photos?mobile=1',
   '/products/27400',
   '/products/27400?mobile=1',
+  '/posts',
   '/posts/11247-6-nestandartnyh-sistem-hraneniya-dlya-ochen-malenkoy-kvartiry',
   '/posts/11238-36-idealnyh-svetilnikov-dlya-malenkoy-kuhni',
   '/posts/11096-novyy-sposob-oformleniya-derevyannogo-doma-kottedzh-v-nikolo-prozorovo',
+  '/news',
+  '/news/1924-shkola-milly-rezanovoy-zapuskaet-onlayn-kurs-interiernogo-risunka',
+  '/discussions',
+  '/discussions/dizayn-interjera/topics/1912-kak-vam-neoklassicheskiy-stil-v-interiere-spalni',
+  '/profi'
 ];
 
 var host = system.env.host || 'http://staging.inmyroom.ru';
