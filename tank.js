@@ -17,7 +17,8 @@ var links = [
   '/news/1924-shkola-milly-rezanovoy-zapuskaet-onlayn-kurs-interiernogo-risunka',
   '/discussions',
   '/discussions/dizayn-interjera/topics/1912-kak-vam-neoklassicheskiy-stil-v-interiere-spalni',
-  '/profi'
+  '/profi',
+  '/posts/12437-test-inmyroom-kakoy-ty-dachnik'
 ];
 
 var host = system.env.host || 'http://staging.inmyroom.ru';
