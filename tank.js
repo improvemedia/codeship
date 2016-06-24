@@ -12,6 +12,8 @@ var links = [
   '/posts',
   '/posts/11247-6-nestandartnyh-sistem-hraneniya-dlya-ochen-malenkoy-kvartiry',
   '/posts/11238-36-idealnyh-svetilnikov-dlya-malenkoy-kuhni',
+  '/posts/11238-36-idealnyh-svetilnikov-dlya-malenkoy-kuhni?mobile=1',
+  '/posts/11238-36-idealnyh-svetilnikov-dlya-malenkoy-kuhni.webview',
   '/posts/11096-novyy-sposob-oformleniya-derevyannogo-doma-kottedzh-v-nikolo-prozorovo',
   '/news',
   '/news/1924-shkola-milly-rezanovoy-zapuskaet-onlayn-kurs-interiernogo-risunka',
