@@ -23,7 +23,7 @@ var links = [
   '/posts/12437-test-inmyroom-kakoy-ty-dachnik'
 ];
 
-var host = system.env.host || 'http://staging.inmyroom.ru';
+var host = system.env.host || 'https://staging.inmyroom.ru';
 
 casper.options.pageSettings.loadImages        = false;
 casper.options.pageSettings.javascriptEnabled = false;
