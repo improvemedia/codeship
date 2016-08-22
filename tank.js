@@ -23,6 +23,9 @@ var links = [
   '/posts/12437-test-inmyroom-kakoy-ty-dachnik'
 ];
 
+var authLink = '/tank/authenticate'
+var authorizedLinks = ['/admin2/orders']
+
 var host = system.env.host || 'https://staging.inmyroom.ru';
 
 casper.options.pageSettings.loadImages        = false;
@@ -35,6 +38,21 @@ casper.test.begin('links unauthorized', links.length, function(test) {
   casper.setHttpAuth('imr', 'imr');
 
   links.forEach(function(link) {
+    casper.thenOpen(host + link, function() {
+      casper.test.assertHttpStatus(200, link);
+    });
+  });
+
+  casper.run(function() {
+    test.done();
+  });
+});
+
+casper.test.begin('authorized links', authorizedLinks.length, function(test) {
+  casper.start();
+  casper.setHttpAuth('imr', 'imr');
+  casper.thenOpen(host + authLink);
+  authorizedLinks.forEach(function(link) {
     casper.thenOpen(host + link, function() {
       casper.test.assertHttpStatus(200, link);
     });
