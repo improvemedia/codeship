@@ -5,6 +5,8 @@ var links = [
   '/products?mobile=1',
   '/products/myagkaya-mebel',
   '/products/myagkaya-mebel?mobile=1',
+  '/products/mebel/stoly',
+  '/products/mebel/stoly?mobile=1',
   '/photos',
   '/photos?mobile=1',
   '/products/27400',
