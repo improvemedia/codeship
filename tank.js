@@ -25,10 +25,12 @@ var links = [
 ];
 var authLink = '/tank/authenticate';
 
-
 var HOSTS = {inmyroom: 'https://staging.inmyroom.ru', kitchenmag: 'https://staging.kitchenmag.ru'};
+var basicAuth = {inmyroom: 'imr', kitchenmag: 'km'};
 var app = system.env.PROJECT;
 console.log(app);
+
+var credentials = basicAuth[app]
 
 var publicLinks = links.filter(function(link) {return !link.auth && (link.site == app || link.site == '*')});
 var authorizedLinks = links.filter(function(link) {return link.auth && (link.site == app || link.site == '*')});
@@ -42,10 +44,11 @@ casper.options.waitTimeout = 10000;
 
 casper.test.begin('links unauthorized', publicLinks.length, function(test) {
   casper.start();
-  casper.setHttpAuth('imr', 'imr');
+  casper.setHttpAuth(credentials, credentials);
 
   publicLinks.forEach(function(link) {
     casper.thenOpen(host + link.path, function() {
+      console.log(host + link.path)
       casper.test.assertHttpStatus(200, link.path);
     });
   });
@@ -57,10 +60,11 @@ casper.test.begin('links unauthorized', publicLinks.length, function(test) {
 
 casper.test.begin('authorized links', authorizedLinks.length, function(test) {
   casper.start();
-  casper.setHttpAuth('imr', 'imr');
+  casper.setHttpAuth(credentials, credentials);
   casper.thenOpen(host + authLink);
   authorizedLinks.forEach(function(link) {
     casper.thenOpen(host + link.path, function() {
+      console.log(host + link.path)
       casper.test.assertHttpStatus(200, link.path);
     });
   });
