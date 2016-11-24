@@ -21,7 +21,9 @@ var links = [
   {path: '/news/1924-shkola-milly-rezanovoy-zapuskaet-onlayn-kurs-interiernogo-risunka',               site: 'inmyroom'},
   {path: '/posts/11096-novyy-sposob-oformleniya-derevyannogo-doma-kottedzh-v-nikolo-prozorovo',        site: 'inmyroom'},
   {path: '/discussions/dizayn-interjera/topics/1912-kak-vam-neoklassicheskiy-stil-v-interiere-spalni', site: 'inmyroom'},
-  {path: '/admin/orders',                                                                             site: 'inmyroom', auth: true}
+  {path: '/admin/orders',                                                                             site: 'inmyroom', auth: true},
+  {path: '/admin/product_categories/new',
+  site: 'inmyroom', auth: true}
 ];
 var authLink = '/tank/authenticate';
 
