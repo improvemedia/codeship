@@ -140,12 +140,12 @@ var basicAuth = {inmyroom: 'imr', kitchenmag: 'km'};
 var app = system.env.PROJECT;
 console.log(app);
 
-var credentials = 'imr';//basicAuth[app];
+var credentials = basicAuth[app];
 
-var publicLinks = links.filter(function(link) {return !link.auth})// && (link.site == app || link.site == '*')});
-var authorizedLinks = links.filter(function(link) {return link.auth})// && (link.site == app || link.site == '*')});
+var publicLinks = links.filter(function(link) {return !link.auth && (link.site == app || link.site == '*')});
+var authorizedLinks = links.filter(function(link) {return link.auth && (link.site == app || link.site == '*')});
 
-var host = 'http://localhost:3000';//HOSTS[app];
+var host = HOSTS[app];
 
 casper.options.pageSettings.loadImages        = false;
 casper.options.pageSettings.javascriptEnabled = false;
