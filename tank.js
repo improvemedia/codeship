@@ -5,14 +5,16 @@ var links = [
   {path: '/posts',                                                                                     site: '*'},
   {path: '/profi',                                                                                     site: 'inmyroom'},
   {path: '/photos',                                                                                    site: 'inmyroom'},
-  {path: '/products',                                                                                  site: 'inmyroom'},
   {path: '/discussions',                                                                               site: '*'},
-  {path: '/products/27400',                                                                            site: 'inmyroom'},
-  {path: '/photos?mobile=1',                                                                           site: 'inmyroom'},
+  {path: '/products',                                                                                  site: 'inmyroom'},
   {path: '/products?mobile=1',                                                                         site: 'inmyroom'},
-  {path: '/products/myagkaya-mebel',                                                                   site: 'inmyroom'},
+  {path: '/products/27400',                                                                            site: 'inmyroom'},
   {path: '/products/27400?mobile=1',                                                                   site: 'inmyroom'},
-  {path: '/products/myagkaya-mebel?mobile=1',                                                          site: 'inmyroom'},
+  {path: '/photos?mobile=1',                                                                           site: 'inmyroom'},
+  {path: '/products/mebel',                                                                            site: 'inmyroom'},
+  {path: '/products/mebel?mobile=1',                                                                   site: 'inmyroom'},
+  {path: '/products/mebel/stulya',                                                                     site: 'inmyroom'},
+  {path: '/products/mebel/stulya?mobile=1',                                                            site: 'inmyroom'},
   {path: '/posts/12437-test-inmyroom-kakoy-ty-dachnik',                                                site: 'inmyroom'},
   {path: '/posts/11238-36-idealnyh-svetilnikov-dlya-malenkoy-kuhni',                                   site: 'inmyroom'},
   {path: '/posts/11238-36-idealnyh-svetilnikov-dlya-malenkoy-kuhni.webview',                           site: 'inmyroom'},
@@ -21,31 +23,20 @@ var links = [
   {path: '/news/1924-shkola-milly-rezanovoy-zapuskaet-onlayn-kurs-interiernogo-risunka',               site: 'inmyroom'},
   {path: '/posts/11096-novyy-sposob-oformleniya-derevyannogo-doma-kottedzh-v-nikolo-prozorovo',        site: 'inmyroom'},
   {path: '/discussions/dizayn-interjera/topics/1912-kak-vam-neoklassicheskiy-stil-v-interiere-spalni', site: 'inmyroom'},
-  {path: '/admin/orders',                                                                             site: 'inmyroom', auth: true},
-  {path: '/admin/product_categories/new',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/posts',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/sale_posts',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/quizzes',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/meter/posts',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/meter/teasers',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/orders/analytics',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/chronology',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/crm/employees',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/crm/vendors',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/inquiries',
-  site: 'inmyroom', auth: true},
-  {path: '/admin/inquiries/declined',
-  site: 'inmyroom', auth: true},
+  
+  {path: '/admin/orders', site: 'inmyroom', auth: true},
+  {path: '/admin/product_categories/new', site: 'inmyroom', auth: true},
+  {path: '/admin/posts', site: 'inmyroom', auth: true},
+  {path: '/admin/sale_posts', site: 'inmyroom', auth: true},
+  {path: '/admin/quizzes', site: 'inmyroom', auth: true},
+  {path: '/admin/meter/posts', site: 'inmyroom', auth: true},
+  {path: '/admin/meter/teasers', site: 'inmyroom', auth: true},
+  {path: '/admin/orders/analytics', site: 'inmyroom', auth: true},
+  {path: '/admin/chronology', site: 'inmyroom', auth: true},
+  {path: '/admin/crm/employees', site: 'inmyroom', auth: true},
+  {path: '/admin/crm/vendors', site: 'inmyroom', auth: true},
+  {path: '/admin/inquiries', site: 'inmyroom', auth: true},
+  {path: '/admin/inquiries/declined', site: 'inmyroom', auth: true},
   {path: '/admin/orders/logistic',
   site: 'inmyroom', auth: true},
   {path: '/admin/crm/logistic/calendars',
@@ -133,19 +124,27 @@ var links = [
   {path: '/admin/own_companies',
   site: 'inmyroom', auth: true}
 ];
+
 var authLink = '/tank/authenticate';
 
-var HOSTS = {inmyroom: 'https://staging.inmyroom.ru', kitchenmag: 'https://staging.kitchenmag.ru'};
-var basicAuth = {inmyroom: 'imr', kitchenmag: 'km'};
-var app = system.env.PROJECT;
+var APP_HOSTS = { 
+  inmyroom: 'https://staging.inmyroom.ru', 
+  kitchenmag: 'https://staging.kitchenmag.ru' 
+};
+
+var APP_CREDENTIALS = { 
+  inmyroom: 'imr', 
+  kitchenmag: 'km' 
+};
+
+var app         = system.env.PROJECT;
+var host        = APP_HOSTS[app];
+var credentials = APP_CREDENTIALS[app];
+
 console.log(app);
 
-var credentials = basicAuth[app];
-
-var publicLinks = links.filter(function(link) {return !link.auth && (link.site == app || link.site == '*')});
-var authorizedLinks = links.filter(function(link) {return link.auth && (link.site == app || link.site == '*')});
-
-var host = HOSTS[app];
+var publicLinks     = links.filter(function(link) {return !link.auth && (link.site == app || link.site == '*')});
+var authorizedLinks = links.filter(function(link) {return link.auth  && (link.site == app || link.site == '*')});
 
 casper.options.pageSettings.loadImages        = false;
 casper.options.pageSettings.javascriptEnabled = false;
