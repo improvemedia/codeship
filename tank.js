@@ -5,16 +5,17 @@ var links = [
   {path: '/posts',                                                                                     site: '*'},
   {path: '/profi',                                                                                     site: 'inmyroom'},
   {path: '/photos',                                                                                    site: 'inmyroom'},
-  {path: '/discussions',                                                                               site: '*'},
   {path: '/products',                                                                                  site: 'inmyroom'},
-  {path: '/products?mobile=1',                                                                         site: 'inmyroom'},
+  {path: '/recipes',                                                                                     site: 'kitchenmag'},
+  {path: '/discussions',                                                                               site: '*'},
   {path: '/products/27400',                                                                            site: 'inmyroom'},
-  {path: '/products/27400?mobile=1',                                                                   site: 'inmyroom'},
-  {path: '/photos?mobile=1',                                                                           site: 'inmyroom'},
-  {path: '/products/mebel',                                                                            site: 'inmyroom'},
-  {path: '/products/mebel?mobile=1',                                                                   site: 'inmyroom'},
-  {path: '/products/mebel/stulya',                                                                     site: 'inmyroom'},
-  {path: '/products/mebel/stulya?mobile=1',                                                            site: 'inmyroom'},
+  {path: '/photos?_mobile=1',                                                                           site: 'inmyroom'},
+  {path: '/products?_mobile=1',                                                                         site: 'inmyroom'},
+  {path: '/products/myagkaya-mebel',                                                                   site: 'inmyroom'},
+  {path: '/products/27400?_mobile=1',                                                                   site: 'inmyroom'},
+  {path: '/recipes/10645-nut-s-zelenyu', site: 'kitchenmag'},
+  {path: '/products/myagkaya-mebel?_mobile=1',                                                          site: 'inmyroom'},
+  {path: '/recipes/10645-nut-s-zelenyu?_mobile=1', site: 'kitchenmag'},
   {path: '/posts/12437-test-inmyroom-kakoy-ty-dachnik',                                                site: 'inmyroom'},
   {path: '/posts/11238-36-idealnyh-svetilnikov-dlya-malenkoy-kuhni',                                   site: 'inmyroom'},
   {path: '/posts/11238-36-idealnyh-svetilnikov-dlya-malenkoy-kuhni.webview',                           site: 'inmyroom'},
@@ -22,21 +23,34 @@ var links = [
   {path: '/posts/11247-6-nestandartnyh-sistem-hraneniya-dlya-ochen-malenkoy-kvartiry',                 site: 'inmyroom'},
   {path: '/news/1924-shkola-milly-rezanovoy-zapuskaet-onlayn-kurs-interiernogo-risunka',               site: 'inmyroom'},
   {path: '/posts/11096-novyy-sposob-oformleniya-derevyannogo-doma-kottedzh-v-nikolo-prozorovo',        site: 'inmyroom'},
+  {path: '/posts/10503-desyat-samyh-zdorovyh-i-vkusnyh-perekusov-dlya-tekh-kto-vsegda-sledit-za-figuroj',          site: 'kitchenmag'},
   {path: '/discussions/dizayn-interjera/topics/1912-kak-vam-neoklassicheskiy-stil-v-interiere-spalni', site: 'inmyroom'},
-  
-  {path: '/admin/orders', site: 'inmyroom', auth: true},
-  {path: '/admin/product_categories/new', site: 'inmyroom', auth: true},
-  {path: '/admin/posts', site: 'inmyroom', auth: true},
-  {path: '/admin/sale_posts', site: 'inmyroom', auth: true},
-  {path: '/admin/quizzes', site: 'inmyroom', auth: true},
-  {path: '/admin/meter/posts', site: 'inmyroom', auth: true},
-  {path: '/admin/meter/teasers', site: 'inmyroom', auth: true},
-  {path: '/admin/orders/analytics', site: 'inmyroom', auth: true},
-  {path: '/admin/chronology', site: 'inmyroom', auth: true},
-  {path: '/admin/crm/employees', site: 'inmyroom', auth: true},
-  {path: '/admin/crm/vendors', site: 'inmyroom', auth: true},
-  {path: '/admin/inquiries', site: 'inmyroom', auth: true},
-  {path: '/admin/inquiries/declined', site: 'inmyroom', auth: true},
+  {path: '/posts/10503-desyat-samyh-zdorovyh-i-vkusnyh-perekusov-dlya-tekh-kto-vsegda-sledit-za-figuroj?_mobile=1',site: 'kitchenmag'},
+  {path: '/admin/orders',                                                                             site: 'inmyroom', auth: true},
+  {path: '/admin/product_categories/new',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/posts',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/sale_posts',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/quizzes',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/meter/posts',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/meter/teasers',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/orders/analytics',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/chronology',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/crm/employees',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/crm/vendors',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/inquiries',
+  site: 'inmyroom', auth: true},
+  {path: '/admin/inquiries/declined',
+  site: 'inmyroom', auth: true},
   {path: '/admin/orders/logistic',
   site: 'inmyroom', auth: true},
   {path: '/admin/crm/logistic/calendars',
@@ -127,14 +141,14 @@ var links = [
 
 var authLink = '/tank/authenticate';
 
-var APP_HOSTS = { 
-  inmyroom: 'https://staging.inmyroom.ru', 
-  kitchenmag: 'https://staging.kitchenmag.ru' 
+var APP_HOSTS = {
+  inmyroom: 'https://staging.inmyroom.ru',
+  kitchenmag: 'https://staging.kitchenmag.ru'
 };
 
-var APP_CREDENTIALS = { 
-  inmyroom: 'imr', 
-  kitchenmag: 'km' 
+var APP_CREDENTIALS = {
+  inmyroom: 'imr',
+  kitchenmag: 'km'
 };
 
 var app         = system.env.PROJECT;
