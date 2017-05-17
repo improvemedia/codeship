@@ -45,7 +45,7 @@ var links = [
   site: 'inmyroom', auth: true},
   {path: '/admin/crm/employees',
   site: 'inmyroom', auth: true},
-  {path: '/admin/crm/vendors',
+  {path: '/admin/crm/suppliers',
   site: 'inmyroom', auth: true},
   {path: '/admin/inquiries',
   site: 'inmyroom', auth: true},
