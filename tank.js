@@ -132,7 +132,7 @@ var authorizedLinks = links.filter(function(link) {return link.auth  && (link.si
 casper.options.pageSettings.loadImages        = false;
 casper.options.pageSettings.javascriptEnabled = false;
 casper.options.pageSettings.loadPlugins       = false;
-casper.options.waitTimeout = 10000;
+casper.options.waitTimeout = 20000;
 
 casper.test.begin('links unauthorized', publicLinks.length, function(test) {
   casper.start();
