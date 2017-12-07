@@ -34,6 +34,7 @@ var links = [].concat(
     '/posts/11238-36-idealnyh-svetilnikov-dlya-malenkoy-kuhni?mobile=1',
     '/posts/11247-6-nestandartnyh-sistem-hraneniya-dlya-ochen-malenkoy-kvartiry',
     '/posts/11096-novyy-sposob-oformleniya-derevyannogo-doma-kottedzh-v-nikolo-prozorovo',
+    '/products/offers/14132-chto-kupit-dlya-doma-novinki-kataloga-2017',
     '/news/1924-shkola-milly-rezanovoy-zapuskaet-onlayn-kurs-interiernogo-risunka',
     '/discussions/dizayn-interjera/topics/1912-kak-vam-neoklassicheskiy-stil-v-interiere-spalni',
   ]),
