@@ -24,6 +24,7 @@ var links = [].concat(
     '/photos?_mobile=1',
     '/products?_mobile=1',
     '/products/myagkaya-mebel',
+    '/products/tekstil/postelnoe-belie',
     '/products/27400?_mobile=1',
     '/products/myagkaya-mebel?_mobile=1',
     '/tags/kukhnya-i-stolovaya',
