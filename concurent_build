@@ -1,103 +1,58 @@
 #!/usr/bin/env ruby
 require 'json'
-require 'net/http'
-require 'openssl'
 
-branch    = ENV['CI_BRANCH']
-build_uid = ENV['CI_BUILD_NUMBER']
+API_TOKEN='e87ad0f672d17638ca66c297ee1ddfcb3b55ff3aacdbd0f6eec8892f21b3'
 
-raise 'branch is undefined' if branch.nil?
-raise 'build is undefined' if build_uid.nil?
+MARVIN_ID =75247
+
+BRANCH   = ENV['CI_BRANCH']       #|| 'develop'
+MY_BUILD = ENV['CI_BUILD_NUMBER'] #
+
+raise 'branch undefined' if BRANCH.nil?
+raise 'build  undefined' if MY_BUILD.nil?
 
 class Project
-  API_ENDPOINT = 'https://api.codeship.com/v2'.freeze
-
-  attr_reader :organization_uid, :project_uid
-
-  def initialize(organization_uid, project_uid)
-    @organization_uid = organization_uid
-    @project_uid      = project_uid
+  def builds
+    data['builds']
   end
-
-  def first_build?(branch, build_uid)
-    build = first_working_build_by_branch(branch)
-    raise "no branches working with #{branch}" if build.nil?
-
-    build['uuid'] == build_uid
-  end
-
-  def reload!
-    @builds = fetch_builds
-  end
-
-  private
 
   def first_working_build_by_branch(name)
-    working_branches_by_name(name).min_by { |b| b['queued_at'] }
+    working_branches_by_name(name).min_by { |b| b['started_at']}
   end
 
   def working_branches_by_name(name)
-    builds.select do |build|
-      build['ref'] == "heads/#{name}" && build['status'] == 'testing'
-    end
+    builds.select { |b| b['branch'] == name && ['testing'].include?(b['status'])  }
   end
 
-  def token
-    url    = URI("#{API_ENDPOINT}/auth")
-    client = client_for(url)
-
-    request = Net::HTTP::Post.new(url).tap do |result|
-      result.basic_auth(ENV['CI_LOGIN'], ENV['CI_PASSWORD'])
-    end
-    response = client.request(request)
-
-    parsed_response(response).fetch('access_token')
+  def build_first?(branch, build_id)
+    build =first_working_build_by_branch(branch)
+    raise "no branches working with #{BRANCH}" if build.nil?
+    build['id'].to_s == build_id
   end
 
-  def client_for(url)
-    Net::HTTP.new(url.host, url.port).tap do |result|
-      result.use_ssl = true
-      result.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    end
+  def reload!
+    url = "https://codeship.com/api/v1/projects/#{MARVIN_ID}.json?api_key=#{API_TOKEN}"
+    puts url
+    result = %x|curl -sS #{url}|
+    @data = JSON.parse(result)
   end
 
-  def parsed_response(response)
-    JSON.parse(response.read_body)
-  end
-
-  def builds
-    @builds ||= fetch_builds
-  end
-
-  def fetch_builds
-    url = URI(
-      "#{API_ENDPOINT}/organizations/#{organization_uid}/projects/#{project_uid}/builds"
-    )
-    client = client_for(url)
-
-    request = Net::HTTP::Get.new(url).tap do |result|
-      result['Authorization'] = "Bearer #{token}"
-    end
-    response = client.request(request)
-
-    parsed_response(response).fetch('builds')
+  def data
+    @data || reload!
   end
 end
 
-# ImproveMedia organization uid, Jarvis project uid
-project = Project.new(
-  '23d3a7f0-e93d-0133-b53e-76bef8d7b14f', '7ef7f420-c982-0132-2d00-12acee263f11'
-)
+p = Project.new
 
-puts "BRANCH:#{branch}"
-puts "BUILD: #{build_uid}"
-puts project.send(:working_branches_by_name, branch)
+puts "BRANCH:#{BRANCH}"
+puts "BUILD: #{MY_BUILD}"
+puts p.working_branches_by_name(BRANCH)
 
 loop do
-  break if project.first_build?(branch, build_uid)
+  break if p.build_first?(BRANCH, MY_BUILD)
   puts 'wait'
   sleep 60
-  project.reload!
+  p.reload!
 end
 
 puts 'go!'
