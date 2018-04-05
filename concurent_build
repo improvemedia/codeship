@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'json'
 
-API_TOKEN='57f4a8b0001e0135037c2ed492acd5c5'
+API_TOKEN='0dde8c301af1013648c65a79b8a0b3ff'
 
 MARVIN_ID =75247
 
