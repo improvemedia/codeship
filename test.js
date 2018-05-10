@@ -1,5 +1,5 @@
 let env = require('./env');
 
-jest.setTimeout(10000);
+jest.setTimeout(20000);
 
 require(`./test/${env.app}`);

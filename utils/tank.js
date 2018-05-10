@@ -17,8 +17,12 @@ module.exports = (title, { links, auth }) => {
       }
 
       page.on('pageerror', (error) => {
-        throw new Error(error)
+        console.log(error)
       });
+
+      page.on('error', (error) => {
+        console.log(error)
+      })
     });
 
     afterAll(async () => {
