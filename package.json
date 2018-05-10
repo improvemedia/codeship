@@ -1,0 +1,11 @@
+{
+  "jest": {
+    "preset": "jest-puppeteer",
+    "verbose": true
+  },
+  "devDependencies": {
+    "jest": "^22.4.3",
+    "jest-puppeteer": "^3.0.1",
+    "puppeteer": "^1.4.0"
+  }
+}
