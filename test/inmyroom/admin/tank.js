@@ -59,6 +59,7 @@ tank('inmyroom / admin / tank', {
     '/admin/uploads/1',
     '/admin/forums',
     '/admin/forums/pereplanirovki',
-    '/admin/own_companies'
+    '/admin/own_companies',
+    '/admin/designers'
   ]
 })
