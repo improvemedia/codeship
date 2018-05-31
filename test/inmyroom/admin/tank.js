@@ -23,7 +23,7 @@ tank('inmyroom / admin / tank', {
     '/admin/crm/logistic/delivery_calendars',
     '/admin/crm/logistic/payment_calendars',
     '/admin/crm/quality_controls',
-    '/admin/regional_shipping_methods',
+    '/admin/shipping_methods',
     '/admin/companies',
     '/admin/yml_imports',
     '/admin/moderator/products',
