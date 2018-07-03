@@ -7,7 +7,6 @@ tank('inmyroom / admin / tank', {
     '/admin/orders',
     '/admin/orders/deleted',
     '/admin/orders/logistic',
-    '/admin/orders/analytics',
     '/admin/product_categories/new',
     '/admin/posts',
     '/admin/sale_posts',
