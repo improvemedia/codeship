@@ -18,7 +18,6 @@ tank('inmyroom / admin / tank', {
     '/admin/crm/suppliers',
     '/admin/inquiries',
     '/admin/inquiries/declined',
-    '/admin/crm/product_analytics',
     '/admin/crm/logistic/calendars',
     '/admin/crm/logistic/delivery_calendars',
     '/admin/crm/logistic/payment_calendars',
