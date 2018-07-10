@@ -14,6 +14,7 @@ tank('inmyroom / tank / desktop', {
     '/products/27400',
     '/products/myagkaya-mebel',
     '/products/tekstil/postelnoe-belie',
+    '/products/_search?q=Laska',
     '/tags/kukhnya-i-stolovaya',
     '/posts/12437-test-inmyroom-kakoy-ty-dachnik',
     '/posts/17301-kak-ozhivit-odnotonnyj-interer-3-pravila',
