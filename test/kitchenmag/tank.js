@@ -7,7 +7,7 @@ tank('kitchenmag / tank / desktop', {
     '/',
     '/news',
     '/posts',
-    '/discussions',
+    // '/discussions',
     '/recipes',
     '/recipes/10645-nut-s-zelenyu',
     '/posts/10503-desyat-samyh-zdorovyh-i-vkusnyh-perekusov-dlya-tekh-kto-vsegda-sledit-za-figuroj',

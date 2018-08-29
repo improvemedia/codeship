@@ -56,8 +56,8 @@ tank('inmyroom / admin / tank', {
     '/admin/crm/stocks/standart_stock',
     '/admin/crm/stocks/return_stock',
     '/admin/uploads/1',
-    '/admin/forums',
-    '/admin/forums/pereplanirovki',
+    // '/admin/forums',
+    // '/admin/forums/pereplanirovki',
     '/admin/own_companies',
     '/admin/designers'
   ]
