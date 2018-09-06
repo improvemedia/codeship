@@ -8,7 +8,7 @@ tank('inmyroom / admin / tank', {
     '/admin/orders/deleted',
     '/admin/orders/logistic',
     '/admin/orders/sales_funnel',
-    '/admin/crm/product_analytics'
+    '/admin/crm/product_analytics',
     '/admin/crm/logistic/calendars',
     '/admin/crm/logistic/delivery_calendars',
     '/admin/crm/logistic/payment_calendars',
