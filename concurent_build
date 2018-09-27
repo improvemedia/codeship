@@ -3,7 +3,7 @@ require 'json'
 
 API_TOKEN='0dde8c301af1013648c65a79b8a0b3ff'
 
-MARVIN_ID =75247
+# MARVIN_ID =75247
 
 BRANCH   = ENV['CI_BRANCH']       #|| 'develop'
 MY_BUILD = ENV['CI_BUILD_NUMBER'] #
@@ -46,6 +46,7 @@ p = Project.new
 
 puts "BRANCH:#{BRANCH}"
 puts "BUILD: #{MY_BUILD}"
+puts "BUILD_URL: #{ENV['CI_BUILD_URL']}"
 puts p.working_branches_by_name(BRANCH)
 
 loop do
