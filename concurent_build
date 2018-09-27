@@ -1,59 +1,69 @@
-#!/usr/bin/env ruby
 require 'json'
 
-API_TOKEN='0dde8c301af1013648c65a79b8a0b3ff'
-
-# MARVIN_ID =75247
-
-BRANCH   = ENV['CI_BRANCH']       #|| 'develop'
-MY_BUILD = ENV['CI_BUILD_NUMBER'] #
-
-raise 'branch undefined' if BRANCH.nil?
-raise 'build  undefined' if MY_BUILD.nil?
-
 class Project
-  def builds
-    data['builds']
-  end
-
-  def first_working_build_by_branch(name)
-    working_branches_by_name(name).min_by { |b| b['started_at']}
-  end
+  org_uuid    = '23d3a7f0-e93d-0133-b53e-76bef8d7b14f'
+  proj_uuid   = '7ef7f420-c982-0132-2d00-12acee263f11'
+  BUILDS_URL  = "https://api.codeship.com/v2/organizations/#{org_uuid}/projects/#{proj_uuid}/builds".freeze
+  CREDENTIALS = 'artpyankov@gmail.com:06rRH1w*'.freeze
 
   def working_branches_by_name(name)
-    builds.select { |b| b['branch'] == name && ['testing'].include?(b['status'])  }
+    builds.select do |build|
+      build['branch'] == name && build['status'] == 'testing'
+    end
   end
 
-  def build_first?(branch, build_id)
-    build =first_working_build_by_branch(branch)
-    raise "no branches working with #{BRANCH}" if build.nil?
-    build['id'].to_s == build_id
+  def build_first?(branch, commit)
+    build = first_working_build_by_branch(branch)
+    raise "No branches working with #{branch}" if build.nil?
+
+    build['commit_sha'] == commit
   end
 
-  def reload!
-    url = "https://codeship.com/api/v1/projects/#{MARVIN_ID}.json?api_key=#{API_TOKEN}"
-    puts url
-    result = %x|curl -sS #{url}|
-    @data = JSON.parse(result)
+  private
+
+  def builds
+    data.fetch('builds')
   end
 
   def data
     @data || reload!
   end
+
+  def first_working_build_by_branch(name)
+    working_branches_by_name(name).min_by { |build| build['started_at'] }
+  end
+
+  def reload!
+    @data = JSON.parse(`curl -H 'Authorization:#{token}' #{BUILDS_URL}`)
+  end
+
+  def token
+    payload =
+      JSON.parse(
+        `curl -X POST --user #{CREDENTIALS} https://api.codeship.com/v2/auth`
+      )
+
+    payload.fetch('access_token')
+  end
 end
 
-p = Project.new
+branch = ENV.fetch('CI_BRANCH')
+commit = ENV.fetch('CI_COMMIT_ID')
 
-puts "BRANCH:#{BRANCH}"
-puts "BUILD: #{MY_BUILD}"
-puts "BUILD_URL: #{ENV['CI_BUILD_URL']}"
-puts p.working_branches_by_name(BRANCH)
+raise 'branch undefined' if branch.nil?
+raise 'commit undefined' if commit.nil?
+
+proj = Project.new
+
+puts "BRANCH: #{branch}"
+puts "COMMIT: #{commit}"
+puts proj.working_branches_by_name(branch)
 
 loop do
-  break if p.build_first?(BRANCH, MY_BUILD)
+  break if proj.build_first?(branch, commit)
   puts 'wait'
   sleep 60
-  p.reload!
+  proj.reload!
 end
 
 puts 'go!'
