@@ -4,7 +4,7 @@ class Project
   org_uuid    = '23d3a7f0-e93d-0133-b53e-76bef8d7b14f'
   proj_uuid   = '7ef7f420-c982-0132-2d00-12acee263f11'
   BUILDS_URL  = "https://api.codeship.com/v2/organizations/#{org_uuid}/projects/#{proj_uuid}/builds".freeze
-  CREDENTIALS = 'artpyankov@gmail.com:06rRH1w*'.freeze
+  CREDENTIALS = 'codeship@improvemedia.ru:123qwe123'.freeze
 
   def working_branches_by_name(name)
     builds.select do |build|
