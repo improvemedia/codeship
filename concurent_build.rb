@@ -50,9 +50,6 @@ end
 branch = ENV.fetch('CI_BRANCH')
 commit = ENV.fetch('CI_COMMIT_ID')
 
-raise 'branch undefined' if branch.nil?
-raise 'commit undefined' if commit.nil?
-
 proj = Project.new
 
 puts "BRANCH: #{branch}"
