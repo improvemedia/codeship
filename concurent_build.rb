@@ -18,6 +18,10 @@ class Project
 
     build['commit_sha'] == commit
   end
+  
+  def reload!
+    @data = JSON.parse(`curl -H 'Authorization:#{token}' #{BUILDS_URL}`)
+  end
 
   private
 
@@ -31,10 +35,6 @@ class Project
 
   def first_working_build_by_branch(name)
     working_branches_by_name(name).min_by { |build| build['started_at'] }
-  end
-
-  def reload!
-    @data = JSON.parse(`curl -H 'Authorization:#{token}' #{BUILDS_URL}`)
   end
 
   def token
