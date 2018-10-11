@@ -4,7 +4,6 @@ tank('inmyroom / tank / desktop', {
   device: 'desktop',
 
   links: [
-    '/',
     '/news',
     '/posts',
     '/profi',
@@ -23,6 +22,7 @@ tank('inmyroom / tank / desktop', {
     '/posts/17352-interer-nedeli-kvartira-v-kotoroj-net-pryamyh-uglov', // standart_wide
     '/products/offers/11382-40-absolyutnyh-must-haves-dlya-malenkoy-kuhni', // hd
     '/news/1924-shkola-milly-rezanovoy-zapuskaet-onlayn-kurs-interiernogo-risunka',
+    '/',
   ]
 })
 
