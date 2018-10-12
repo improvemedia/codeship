@@ -5,6 +5,9 @@ tank('inmyroom / admin / tank', {
 
   links: [
     '/admin/orders',
+    '/admin/orders/18808',
+    '/admin/orders/18808/manager_edit_items',
+    '/admin/orders/18808/logist_edit_items',
     '/admin/orders/deleted',
     '/admin/orders/logistic',
     '/admin/orders/sales_funnel',
@@ -40,11 +43,6 @@ tank('inmyroom / admin / tank', {
     '/admin/metatags',
     '/admin/metatag_variables',
     '/admin/declensions',
-    '/admin/static_pages',
-    '/admin/meter',
-    '/admin/meter/companies',
-    '/admin/search/stats',
-    '/admin/search',
     '/admin/users',
     '/admin/badges',
     '/admin/user_professions',
