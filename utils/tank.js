@@ -48,7 +48,7 @@ module.exports = (title, { links, auth, device }) => {
       it(url, async () => {
         let response = await page.goto(`${env.host}/${url}`, {
           waitUntil: 'networkidle2',
-          timeout: 0
+          timeout: 60000
         });
 
         expect(response.ok()).toBeTruthy();
