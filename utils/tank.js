@@ -46,7 +46,10 @@ module.exports = (title, { links, auth, device }) => {
 
     links.forEach(url => {
       it(url, async () => {
-        let response = await page.goto(`${env.host}/${url}`, { waitUntil: 'networkidle2' });
+        let response = await page.goto(`${env.host}/${url}`, {
+          waitUntil: 'networkidle2',
+          timeout: 0
+        });
 
         expect(response.ok()).toBeTruthy();
         expect(errors).toHaveLength(0);
