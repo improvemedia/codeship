@@ -6,7 +6,7 @@ tank('inmyroom / tank / desktop', {
   links: [
     '/news',
     '/posts',
-    '/profi',
+//     '/profi',
     '/photos',
     '/photos/show/2064546',
     '/products',
@@ -32,7 +32,7 @@ tank('inmyroom / tank / mobile', {
   links: [
     '/',
     '/posts',
-    '/profi',
+//     '/profi',
     '/photos',
     '/photos/show/2064546',
     '/products',
