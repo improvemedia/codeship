@@ -1,7 +1,7 @@
 var app = process.env.PROJECT;
 
 const APP_HOSTS = {
-  inmyroom:   'https://staging.inmyroom.ru',
+  inmyroom:   'https://staging.improvemedia.ru',
   kitchenmag: 'https://staging.kitchenmag.ru'
 }
 
