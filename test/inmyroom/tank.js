@@ -4,9 +4,7 @@ tank('inmyroom / tank / desktop', {
   device: 'desktop',
 
   links: [
-    '/news',
     '/posts',
-    // '/profi',
     '/photos',
     '/photos/show/2064546',
     '/products',
@@ -32,7 +30,6 @@ tank('inmyroom / tank / mobile', {
   links: [
     '/',
     '/posts',
-    // '/profi',
     '/photos',
     '/photos/show/2064546',
     '/products',
