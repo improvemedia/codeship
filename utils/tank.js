@@ -50,6 +50,10 @@ module.exports = (title, { links, auth, device }) => {
           waitUntil: 'networkidle2',
           timeout: 60000
         });
+        if (response === null) {
+          console.log("Got null, trying wait.");
+          response = await page.waitForResponse(() => true);
+        }
 
         expect(response.ok()).toBeTruthy();
         expect(errors).toHaveLength(0);
