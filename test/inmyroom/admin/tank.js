@@ -26,8 +26,6 @@ tank('inmyroom / admin / tank', {
     '/admin/meter/posts',
     '/admin/meter/teasers',
     '/admin/chronology',
-    '/admin/inquiries',
-    '/admin/inquiries/declined',
     '/admin/shipping_methods',
     '/admin/companies',
     '/admin/brands',
